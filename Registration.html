@@ -1,0 +1,87 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Dorel's Online Game</title>
+
+<script>
+  function submitForm() {
+
+var elements = document.getElementById("myForm").elements;
+var firstname = document.getElementsByName("fname")[0].value;
+var lastname = document.getElementsByName("lname")[0].value;
+var email = document.getElementsByName("email")[0].value;
+var password = document.getElementsByName("password")[0].value;
+var month = document.getElementsByName("month")[0].value;
+var day = document.getElementsByName("day")[0].value;
+var year = document.getElementsByName("year")[0].value;
+    
+var elemsArr1 = Array.from(elements);
+var submission = {};
+elemsArr1.forEach((element) => console.log(element.name + " " + element.value));
+
+var isValidInput = true;
+  
+if (!password.includes("!") && !password.includes("?")) {
+
+alert("Password must contain a special symbol");
+isValidInput = false;
+}
+
+if (firstname == "" || lastname == "" || email == "" || password == "" || month == "" || day == "" || year == "") {
+  
+alert("Please fill out all required fields");
+isValidInput = false;
+}
+
+if (isValidInput == true) {
+
+alert("Information:\n\n" + "First name: " + firstname + "\nLast name: " + lastname + "\nEmail: " + email + "\nPassword: " + password + "\nDate of birth: " + month + "/" + day + "/" + year);
+  
+}
+
+}
+
+</script>
+
+
+  
+</head>
+
+<body style="background-color: black">
+  
+  <div class="container">
+    <div class="jumbotron">
+      <h1 align="center" style="color: blue; font-family: cursive">Dorel's Online Game</h1>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSNQ_pEpK879WaCMrOrvU-lHTx2FrZlsKn90oxXemgtVSg0835YjryD8EbHsHiv1ZOg80&usqp=CAU" alt="video game controller" style="display: block; margin: 0 auto;">
+    </div>
+  </div>
+
+<h3 align="center" style="color: red; font-family: fantasy;">Register below and you will get to enjoy gaming like never before!</h3>
+
+<form id="myForm" align="center">
+  First name: <input type="text" name="fname" value=""><br>
+  Last name: <input type="text" name="lname" value=""><br>
+  Email Address: <input type="" name="email" value=""><br>
+  Password: <input type="" name="password" value="" oninput="this.type='password'"><br>
+  Date of Birth: 
+  <input type="text" name="month" placeholder="MM" maxlength="2" size="2"> / 
+  <input type="text" name="day" placeholder="DD" maxlength="2" size="2"> / 
+  <input type="text" name="year" placeholder="YYYY" max="4" maxlength="4" size="4"><br>
+<br>
+<br>
+<br>
+  
+</form>
+<button onclick="submitForm()" style="display: block; margin: 0 auto;">Submit</button>
+<p id="demo"></p>
+
+
+  
+</body>
+
+</html>

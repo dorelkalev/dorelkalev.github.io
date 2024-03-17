@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Dorel's Store</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <script>
+    alert("Welcome to my store!");
+    var name, item, numOfItems;
+    var num = parseInt(numOfItems)
+    name = prompt("What is your name?", "");
+    item = prompt("What would you like to buy?", "");
+    num = prompt("How many would you like to buy? Choose any value from 1 to 99.");
+    
+    if (num >= 1 && num <= 99) {
+    date = new Date();
+    time = date.getHours();
+    if (time < 12) {
+      document.write("<h1>Good morning ");
+    }
+    else if (time < 18) {
+      document.write("<h1>Good afternoon ");
+    }
+    else {
+      document.write("<h1>Good evening ");
+    }
+    document.writeln(name + "! Thank you for ordering " + num + " " +      item + "!</h1>");
+
+    date2 = new Date;
+    date2.setDate(date.getDate() + 7);
+    document.writeln("<h2>Your item will arrive on " + date2 + ".</h2>");
+    }
+
+    else {
+    document.writeln("<h1>Unable to process your item.</h1>");
+    }
+  </script>
+  
+</head>
+
+
+  
+
+<body>
+
+
+  
+</body>
+
+</html>
