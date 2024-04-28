@@ -1,0 +1,128 @@
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Rest API</title>
+
+  <script>
+
+    const Click = async() => {
+    const url = 'https://brianobruno.github.io/cats.json';
+    const options = {method: 'GET'};
+
+    const response = await fetch(url, options);
+    const result = await response.text();
+    const myObj = JSON.parse(result); 
+
+
+      
+    function bubbleSort(a, b) {
+      let n = a.length; 
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+          if (a[j] > a[j + 1]) {
+            [a[j], a[j + 1]] = [a[j + 1], a[j]];
+            [b[j], b[j + 1]] = [b[j + 1], b[j]];
+          }
+        }
+      }
+    }
+
+    var id = [];
+    var catFact = [];
+    for (let i = 0; i < myObj.facts.length; i++) {
+      id[i] = myObj.facts[i].factId;
+      catFact[i] = myObj.facts[i].text;
+    }
+
+    bubbleSort(id, catFact);
+
+    
+    for (let j = 0; j < id.length; j++) {
+      myObj.facts[j].factId = id[j];
+      myObj.facts[j].text = catFact[j];
+    }
+      
+    var table = document.getElementById("table");
+    var factid1 = document.getElementById("factid1");
+    var factid2 = document.getElementById("factid2");
+    var factid3 = document.getElementById("factid3");
+    var factid4 = document.getElementById("factid4");
+    var factid5 = document.getElementById("factid5");
+
+    var fact1 = document.getElementById("fact1");
+    var fact2 = document.getElementById("fact2");
+    var fact3 = document.getElementById("fact3");
+    var fact4 = document.getElementById("fact4");
+    var fact5 = document.getElementById("fact5");
+
+
+    factid1.innerHTML = myObj.facts[0].factId;
+    factid2.innerHTML = myObj.facts[1].factId;
+    factid3.innerHTML = myObj.facts[2].factId;
+    factid4.innerHTML = myObj.facts[3].factId;
+    factid5.innerHTML = myObj.facts[4].factId;
+
+    fact1.innerHTML = myObj.facts[0].text;
+    fact2.innerHTML = myObj.facts[1].text;
+    fact3.innerHTML = myObj.facts[2].text;
+    fact4.innerHTML = myObj.facts[3].text;
+    fact5.innerHTML = myObj.facts[4].text;
+
+
+      document.getElementById("catImage").src = myObj.catPhoto;
+    }
+
+        
+
+    
+    
+      
+  </script>
+  
+<style>
+
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  }
+  
+</style>
+  
+</head>
+
+
+  
+<body>
+
+<button style = "color: green; display: block; margin: 0 auto; background-color: blue;" onclick = "Click()">Press me!</button>
+
+<br><br><br><br>
+
+<table align = "Center" border = "2" id="table">
+
+<tr><th>factID</th><th>fact</th></tr>
+<tr><td id = "factid1">.</td><td id = "fact1">.</td></tr>
+<tr><td id = "factid2">.</td><td id = "fact2">.</td></tr>
+<tr><td id = "factid3">.</td><td id = "fact3">.</td></tr>
+<tr><td id = "factid4">.</td><td id = "fact4">.</td></tr>
+<tr><td id = "factid5">.</td><td id = "fact5">.</td></tr>
+  
+</table>
+
+<br><br><br><br><br><br><br><br>
+
+<img src = "https://th.bing.com/th/id/OIP.7ng8jCJZOZ8YC5Pfq4y1fgHaE8?w=246&h=180&c=7&r=0&o=5&cb=10&dpr=2&pid=1.7" id = "catImage" class = "center">
+
+
+  
+</body>
+
+</html>

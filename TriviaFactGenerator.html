@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bungee+Spice&family=Honk:MORF,SHLN@14,54&family=Jacquard+12+Charted&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bungee+Spice&family=Honk:MORF,SHLN@14,54&family=Jacquard+12+Charted&family=Jersey+20&display=swap" rel="stylesheet">
+
+
+  <title>Trivia Fact Generator</title>
+
+<script>
+
+
+  
+const Click = async() => {
+
+  const trivia = document.getElementById("trivia").value;
+  
+  if (trivia >= 0) {
+
+  const url = 'https://numbersapi.p.rapidapi.com/'+trivia+'/trivia?fragment=true&json=true&rapidapi-key=78986cf290msh54a88d0702b98b0p1a4123jsna7029b8f62b9';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '78986cf290msh54a88d0702b98b0p1a4123jsna7029b8f62b9',
+      'X-RapidAPI-Host': 'numbersapi.p.rapidapi.com'
+    }
+  };
+
+  const response = await fetch(url, options);
+  const result = await response.text();
+  const triviaObj = JSON.parse(result);
+  const fact = document.getElementById("fact");
+  const userResult = document.getElementById("userResult");
+
+  if (triviaObj.found) {
+  fact.innerHTML = triviaObj.text;
+  userResult.innerHTML = triviaObj.number;
+  }
+
+  else
+alert("Unable to retrieve trivia fact for the number! Try a different number.")
+  
+
+  }
+  
+  
+else
+  alert("Number is invalid!");
+  
+  } 
+
+</script>
+
+
+<style>
+
+body {
+background: url(https://33.media.tumblr.com/8ecf3998e2c1ee932f42b0037d6bfd0f/tumblr_nokyp5dKHa1rb40pco3_540.gif) no-repeat center fixed; 
+background-size: cover;
+}
+
+label {
+
+color: darkgreen;
+background-color:lightyellow;
+}
+  
+input[type=text]{
+
+background-color: forestgreen;
+border: 10px solid;
+border-image: url("https://i.pinimg.com/originals/bc/55/51/bc5551ac237a9ef4d8e9575662f2e106.gif") 100 round;
+}
+
+input[type=button] {
+
+background-color: darkolivegreen;
+border-radius: 40%;
+color: cyan;
+border: 100px solid;
+border-image: url("https://i.pinimg.com/originals/bc/55/51/bc5551ac237a9ef4d8e9575662f2e106.gif") 150 round;
+}
+  
+h1 {
+    font-family: "Black Ops One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: red;
+    background-color: darkblue;
+    border: 10px solid;
+    border-image: url(https://i.gifer.com/6E.gif) 4 round;
+  }
+
+h3 {
+    font-family: "Jersey 20", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color:darkorchid;
+    background-color: cyan;
+  }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  
+</style>
+
+  
+</head>
+
+
+  
+<body>
+
+<br><br><br>
+  
+<h1 align="center">This is the trivia fact generator. Input a number to generate a trivia fact about that number. The number must be positive or zero. </h1>
+<br><br><br><br><br><br>
+
+<form action = /submit-form align = "center">
+<label for=trivia>Number</label>
+<input type = "text" id="trivia"> <br>
+<br><br><br>
+<input type = "button" value="Get the trivia fact!" onclick = "Click()">  
+</form>
+
+<br><br> 
+
+<h3 id="userResult" align="center"></h3>
+<br>
+<h3 id="fact" align="center"></h3>
+
+<br><br>
+
+<img src="https://i.gifer.com/7Fba.gif"></img>
+
+<br><br>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="https://dorelkalev.github.io/Numbers">Home</a></li>
+        <li class="active"><a href="#">Trivia</a></li>
+        <li><a href="https://dorelkalev.github.io/MathFactGenerator">Math</a></li>
+        <li><a href="https://dorelkalev.github.io/YearFactGenerator">Year</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+</body>
+
+  
+</html>
